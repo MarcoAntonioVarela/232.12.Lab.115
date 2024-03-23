@@ -14,7 +14,7 @@
  *        deque                 : A class that represents a deque
  *        deque::iterator       : An iterator through a deque
  * Author
- *    <your names here>
+ *    Marco Varela & Andre Regino (03/19/2024)
  ************************************************************************/
 
 #pragma once
@@ -40,12 +40,13 @@ public:
    // 
    // Construct
    //
-   deque(const A & a = A()) 
-   { data = nullptr;
-   }
-   deque(deque & rhs);
+   deque(const A& a = A()) : alloc(a), numCells(16), numBlocks(0), numElements(0), iaFront(0), data(nullptr) {}
+
+   deque(deque& rhs);
+
    ~deque()
    {
+      clear();
    }
 
    //
@@ -59,11 +60,11 @@ public:
    class iterator;
    iterator begin() 
    { 
-      return iterator(); 
+      return iterator(0, this);
    }
    iterator end()   
    { 
-      return iterator(); 
+      return iterator(numElements, this);
    }
 
    // 
@@ -71,27 +72,27 @@ public:
    //
    T & front()       
    { 
-      return *(new T);
+      return data[ibFromID(0)][icFromID(0)];
    }
    const T & front() const 
    {
-      return *(new T);
+      return data[ibFromID(0)][icFromID(0)];
    }
    T & back()
    {
-      return *(new T);
+      return data[ibFromID(numElements - 1)][icFromID(numElements - 1)];
    }
    const T & back() const
    {
-      return *(new T);
+      return data[ibFromID(numElements - 1)][icFromID(numElements - 1)];
    }
    T & operator[](int id)
    {
-      return *(new T);
+      return data[ibFromID(id)][icFromID(id)];
    }
    const T & operator[](int id) const
    {
-      return *(new T);
+      return data[ibFromID(id)][icFromID(id)];
    }
 
    //
@@ -112,26 +113,26 @@ public:
    //
    // Status
    //
-   size_t size()  const { return 99; }
-   bool   empty() const { return false; }
+   size_t size()  const { return numElements; }
+   bool   empty() const { return numElements == 0; }
    
 private:
    // array index from deque index
    int iaFromID(int id) const
    {
-      return -1;
+      return (iaFront + id) % numCells;
    }
 
    // block index from deque index
    int ibFromID(int id) const
    {
-      return -1;
+      return (iaFront + id) / numCells;
    }
 
    // cell index from deque index
    int icFromID(int id) const
    {
-      return -1;
+      return (iaFront + id) % numCells;
    }
 
    // reallocate
@@ -164,13 +165,13 @@ public:
    // 
    // Construct
    //
-   iterator() 
+   iterator() : id(0), d(nullptr)
    {
    }
-   iterator(int id, deque* d) 
+   iterator(int id, deque* d) : id(id), d(d)
    {
    }
-   iterator(const iterator& rhs) 
+   iterator(const iterator& rhs) : id(rhs.id), d(rhs.d)
    { 
    }
 
@@ -179,21 +180,25 @@ public:
    //
    iterator& operator = (const iterator& rhs)
    {
+      if (this != &rhs) {
+         id = rhs.id;
+         d = rhs.d;
+      }
       return *this;
    }
 
    // 
    // Compare
    //
-   bool operator != (const iterator& rhs) const { return true; }
-   bool operator == (const iterator& rhs) const { return true; }
+   bool operator != (const iterator& rhs) const { return id != rhs.id; }
+   bool operator == (const iterator& rhs) const { return id == rhs.id; }
 
    // 
    // Access
    //
    T& operator * ()
    {
-      return *(new T);
+      return d->operator[](id);
    }
 
    // 
@@ -201,27 +206,34 @@ public:
    //
    int operator - (iterator it) const
    {
-      return 99;
+      return id - it.id;
    }
    iterator& operator += (int offset)
    {
+      id += offset;
       return *this;
    }
    iterator& operator ++ ()
    {
+      ++id;
       return *this;
    }
    iterator operator ++ (int postfix)
    {
-      return *this;
+      iterator temp(*this);
+      ++(*this);
+      return temp;
    }
    iterator& operator -- ()
    {
+      --id;
       return *this;
    }
    iterator operator -- (int postfix)
    {
-      return *this;
+      iterator temp(*this);
+      --(*this);
+      return temp;
    }
 
 private:
@@ -237,6 +249,20 @@ private:
 template <typename T, typename A>
 deque <T, A> ::deque(deque& rhs) 
 {
+   alloc = rhs.alloc;
+   numCells = rhs.numCells;
+   numBlocks = rhs.numBlocks;
+   numElements = rhs.numElements;
+   iaFront = rhs.iaFront;
+
+   // Allocate memory for data array
+   data = new T * [numBlocks];
+   for (size_t i = 0; i < numBlocks; ++i) {
+      data[i] = new T[numCells];
+      for (size_t j = 0; j < numCells; ++j) {
+         data[i][j] = rhs.data[i][j]; // Call copy constructor of T
+      }
+   }
 }
 
 /*****************************************
@@ -300,7 +326,7 @@ void deque <T, A> ::clear()
  * Remove the front element from a deque
  ****************************************/
 template <typename T, typename A>
-void deque <T, A> :: pop_front()
+void deque <T, A> ::pop_front()
 {
 }
 
@@ -311,7 +337,11 @@ void deque <T, A> :: pop_front()
 template <typename T, typename A>
 void deque <T, A> ::pop_back()
 {
+   assert(numElements > 0);
+   alloc.destroy(&data[ibFromID(numElements - 1)][icFromID(numElements - 1)]);
+   --numElements;
 }
+
 
 /*****************************************
  * DEQUE :: REALLOCATE
