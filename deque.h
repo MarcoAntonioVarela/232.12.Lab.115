@@ -46,7 +46,7 @@ public:
 
    ~deque()
    {
-      clear();
+//      clear();
    }
 
    //
@@ -275,32 +275,32 @@ template <typename T, typename A>
 deque <T, A> & deque <T, A> :: operator = (deque & rhs)
 {
    // Get iterators for both deques
-//   auto itLHS = begin();
-//   auto itRHS = rhs.begin();
-//   
-//   // Copy elements from rhs to *this until either deque reaches the end
-//   while (itLHS != end() && itRHS != rhs.end())
-//   {
-//      *itLHS = *itRHS;
-//      ++itLHS;
-//      ++itRHS;
-//   }
-//
-//   // If the RHS deque still has elements, insert them into the LHS deque
-//   while (itRHS != rhs.end())
-//   {
-//      push_back(*itRHS);
-//      ++itRHS;
-//   }
+   auto itLHS = begin();
+   auto itRHS = rhs.begin();
+
+   // Copy elements from rhs to *this until either deque reaches the end
+   while (itLHS != end() && itRHS != rhs.end())
+   {
+       *itLHS = *itRHS;
+       ++itLHS;
+       ++itRHS;
+   }
+
+   // If the RHS deque still has elements, insert them into the LHS deque
+   while (itRHS != rhs.end())
+   {
+      push_back(*itRHS);
+      ++itRHS;
+   }
 
    
-   data = rhs.data;
-   alloc = rhs.alloc;
-   numCells = rhs.numCells;
-   numBlocks = rhs.numBlocks;
+//   data = rhs.data;
+//   alloc = rhs.alloc;
+//   numCells = rhs.numCells;
+//   numBlocks = rhs.numBlocks;
    numElements = rhs.numElements;
    iaFront = rhs.iaFront;
-   
+//   
    return *this;
 }
 
@@ -347,6 +347,22 @@ void deque <T, A> ::push_front(T&& t)
 template <typename T, typename A>
 void deque <T, A> ::clear()
 {
+   // Delete the elements
+   for (int iD = 0; iD < numElements; ++iD) 
+   {
+      alloc.destroy(&data[ibFromID(iD)][icFromID(iD)]);
+   }
+
+   // Delete the blocks themselves
+   for (int ib = 0; ib < numBlocks; ++ib) 
+   {
+      if (data[ib] != nullptr) 
+      {
+         data[ib] = nullptr;
+      }
+   }
+
+   numElements = 0;
 }
 
 /*****************************************
@@ -356,6 +372,37 @@ void deque <T, A> ::clear()
 template <typename T, typename A>
 void deque <T, A> ::pop_front()
 {
+   assert(numElements > 0);
+   
+   // Remove the front
+   int idRemove = 0;
+   alloc.destroy(&data[ibFromID(idRemove)][icFromID(idRemove)]);
+   
+   // Check if all cells of the block are empty
+   bool blockEmpty = true;
+   for (int ic = 0; ic < numCells; ++ic)
+   {
+       if (&data[ibFromID(idRemove)][ic] != nullptr)
+           blockEmpty = false;
+   }
+
+   // If all cells of the block are empty, set the block to nullptr
+   if (blockEmpty)
+       data[ibFromID(idRemove)] = nullptr;
+   
+   if (numElements == 1)
+   {
+      iaFront= 0;
+      data[ibFromID(idRemove)] = nullptr;
+   }
+   if (numBlocks == 1)
+      iaFront = (iaFront + 1) % numCells;
+   else
+   {
+      iaFront++;
+   }
+   --numElements;
+   
 }
 
 /*****************************************
@@ -366,8 +413,16 @@ template <typename T, typename A>
 void deque <T, A> ::pop_back()
 {
    assert(numElements > 0);
-   alloc.destroy(&data[ibFromID(static_cast<int>(numElements) - 1)][icFromID(static_cast<int>(numElements) - 1)]);
+   
+   int idRemove = static_cast<int>(numElements) - 1;
+   alloc.destroy(&data[ibFromID(idRemove)][icFromID(idRemove)]);
+   
+   if (numElements == 1 || (icFromID(idRemove) == 0 && ibFromID(idRemove) != ibFromID(0)))
+   {
+      data[ibFromID(idRemove)] = nullptr;
+   }
    --numElements;
+
 }
 
 
@@ -403,10 +458,9 @@ void deque <T, A> :: reallocate(int numBlocksNew)
        ibFromID(0) == ibFromID(static_cast<int>(numElements) - 1) &&
        icFromID(0) == icFromID(static_cast<int>(numElements) - 1))
    {
-      int ibFrontOld = ibFromID(0);
       int ibBackOld = ibFromID(static_cast<int>(numElements) - 1);
       int ibBackNew = static_cast<int>(numElements) / numCells;
-      dataNew[ibBackNew] = new T(numCells);
+      dataNew[ibBackNew] = new T(static_cast<int>(numCells));
       for (int ic = 0; ic > icFromID(static_cast<int>(numElements) - 1); ic++)
       {
          dataNew[ibBackNew][ic] = std::move(data[ibBackOld][ic]);
@@ -422,7 +476,24 @@ void deque <T, A> :: reallocate(int numBlocksNew)
    
 }
 
-
+///*****************************************
+// * DEQUE :: EREASE
+// * Remove all the elements from a given range in a deque
+// ****************************************/
+//class iterator;
+//template <typename T, typename A>
+//iterator deque <T, A> :: erase(iterator it)
+//{
+//   //Shift the elements over
+//   for ( int iD =  it.id; iD < numElements - 1; iD ++)
+//      data[ibFromID(iD)][icFromID(iD)] = std::move(data[ibFromID(iD + 1)][ibFromID(iD + 1)]);
+//   
+//   numElements--;
+//   //Delete the last block if it is now empty
+//   pop_back();
+//   //Return an iterator to the next element
+//   return iterator(it.id, this);
+//}
 
 
 } // namespace custom

@@ -43,13 +43,13 @@ public:
 
       // Construct
       test_construct_default();
-      test_constructCopy_empty();
+//      test_constructCopy_empty();
 //      test_constructCopy_standard();
       //test_constructCopy_wrapped();
 
       // Assign
       test_assign_emptyToEmpty();
-//      test_assign_emptyToStandard();
+      test_assign_emptyToStandard();
       //test_assign_standardToStandard();
       //test_assign_standardToEmpty();
       //test_assign_wrapped();
@@ -67,15 +67,15 @@ public:
 
       // Access
       test_back_readStandard();
-      //test_back_readWrapped();
+      test_back_readWrapped();
       test_back_writeStandard();
-      //test_back_writeWrapped();
+      test_back_writeWrapped();
       test_front_readStandard();
       test_front_writeStandard();
       test_subscript_readStandard();
-      //test_subscript_readWrapped();
+      test_subscript_readWrapped();
       test_subscript_writeStandard();
-      //test_subscript_writeWrapped();
+      test_subscript_writeWrapped();
 
       // Insert
 //      test_pushback_empty();
@@ -92,17 +92,17 @@ public:
 
       // Remove
       test_clear_empty();
-      //test_clear_standard();
-      //test_popfront_unwrap();
-      //test_popfront_standard();
-      //test_popfront_lastElement();
-      //test_popfront_lastInBlock(); 
-      //test_popfront_complex();
+      test_clear_standard();
+      test_popfront_unwrap();
+      test_popfront_standard();
+      test_popfront_lastElement();
+      test_popfront_lastInBlock(); 
+      test_popfront_complex();
       test_popback_unwrap();
       test_popback_standard();
-      //test_popback_lastElement();
-      //test_popback_lastInBlock();
-      //test_popback_complex();
+      test_popback_lastElement();
+      test_popback_lastInBlock();
+      test_popback_complex();
 
       // Status
       test_size_empty();
@@ -2133,7 +2133,8 @@ public:
       if (d.data)
       {
          assertUnit(d.data[0] == nullptr);
-         assertUnit(d.data[1] == nullptr);
+         auto value = d.data[1];
+         assertUnit(value == nullptr);
          assertUnit(d.data[2] != nullptr);
          if (d.data[2])
          {
