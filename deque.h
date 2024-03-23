@@ -250,21 +250,9 @@ template <typename T, typename A>
 deque <T, A> ::deque(deque& rhs) 
 {
    *this = rhs;
-//   alloc = rhs.alloc;
-//   numCells = rhs.numCells;
-//   numBlocks = rhs.numBlocks;
-//   numElements = rhs.numElements;
-//   iaFront = rhs.iaFront;
-//
-//   // Allocate memory for data array
-//   data = new T * [numBlocks];
-//   for (size_t i = 0; i < numBlocks; ++i) {
-//      data[i] = new T[numCells];
-//      for (size_t j = 0; j < numCells; ++j) {
-//         data[i][j] = rhs.data[i][j]; // Call copy constructor of T
-//      }
-//   }
+
 }
+
 
 /*****************************************
  * DEQUE :: COPY-ASSIGN
@@ -329,7 +317,14 @@ void deque <T, A> ::push_back(T && t)
 template <typename T, typename A>
 void deque <T, A> ::push_front(const T& t)
 {
+   if (numElements == numBlocks * numCells) // If deque is full, reallocate
+      reallocate(numBlocks + 1);
+
+   iaFront = (iaFront - 1 + numBlocks * numCells) % (numBlocks * numCells);
+   data[ibFromID(0)][icFromID(0)] = t;
+   ++numElements;
 }
+
 
 /*****************************************
  * DEQUE :: PUSH_FRONT - move
@@ -338,6 +333,12 @@ void deque <T, A> ::push_front(const T& t)
 template <typename T, typename A>
 void deque <T, A> ::push_front(T&& t)
 {
+   if (numElements == numBlocks * numCells) 
+      reallocate(numBlocks + 1);
+
+   iaFront = (iaFront - 1 + numBlocks * numCells) % (numBlocks * numCells);
+   data[ibFromID(0)][icFromID(0)] = std::move(t);
+   ++numElements;
 }
 
 /*****************************************

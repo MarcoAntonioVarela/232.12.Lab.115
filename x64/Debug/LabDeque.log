@@ -25,61 +25,44 @@ C:\Users\marco\Desktop\232.12.Lab.115\deque.h(129,29): warning C4267: 'return': 
               T=Spy
           ]
   
-C:\Users\marco\Desktop\232.12.Lab.115\deque.h(83,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\marco\Desktop\232.12.Lab.115\deque.h(321,28): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'testDeque.cpp')
-  C:\Users\marco\Desktop\232.12.Lab.115\deque.h(83,40):
+  C:\Users\marco\Desktop\232.12.Lab.115\deque.h(321,28):
   the template instantiation context (the oldest one first) is
-  	C:\Users\marco\Desktop\232.12.Lab.115\deque.h(81,8):
-  	while compiling class template member function 'T &custom::deque<T,std::allocator<T>>::back(void)'
+  	C:\Users\marco\Desktop\232.12.Lab.115\deque.h(319,1):
+  	while compiling class template member function 'void custom::deque<Spy,std::allocator<T>>::push_front(const T &)'
           with
           [
               T=Spy
           ]
-  		C:\Users\marco\Desktop\232.12.Lab.115\testDeque.h(2539,9):
-  		see the first reference to 'custom::deque<Spy,std::allocator<T>>::back' in 'TestDeque::test_back_readStandard'
+  		C:\Users\marco\Desktop\232.12.Lab.115\testDeque.h(1531,19):
+  		see the first reference to 'custom::deque<Spy,std::allocator<T>>::push_front' in 'TestDeque::test_pushfront_empty'
           with
           [
               T=Spy
           ]
   
-C:\Users\marco\Desktop\232.12.Lab.115\deque.h(83,67): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\marco\Desktop\232.12.Lab.115\deque.h(323,51): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'testDeque.cpp')
   
-C:\Users\marco\Desktop\232.12.Lab.115\deque.h(67,23): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\marco\Desktop\232.12.Lab.115\deque.h(444,51): warning C4552: '+': result of expression not used
   (compiling source file 'testDeque.cpp')
-  C:\Users\marco\Desktop\232.12.Lab.115\deque.h(67,23):
+  C:\Users\marco\Desktop\232.12.Lab.115\deque.h(444,51):
   the template instantiation context (the oldest one first) is
-  	C:\Users\marco\Desktop\232.12.Lab.115\deque.h(65,13):
-  	while compiling class template member function 'custom::deque<Spy,std::allocator<T>>::iterator custom::deque<T,std::allocator<T>>::end(void)'
+  	C:\Users\marco\Desktop\232.12.Lab.115\deque.h(436,1):
+  	while compiling class template member function 'void custom::deque<Spy,std::allocator<T>>::reallocate(int)'
           with
           [
               T=Spy
           ]
-  		C:\Users\marco\Desktop\232.12.Lab.115\testDeque.h(3147,7):
-  		see the first reference to 'custom::deque<Spy,std::allocator<T>>::end' in 'TestDeque::test_iterator_begin_empty'
-          with
-          [
-              T=Spy
-          ]
-  
-C:\Users\marco\Desktop\232.12.Lab.115\deque.h(341,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'testDeque.cpp')
-  C:\Users\marco\Desktop\232.12.Lab.115\deque.h(341,45):
-  the template instantiation context (the oldest one first) is
-  	C:\Users\marco\Desktop\232.12.Lab.115\deque.h(339,1):
-  	while compiling class template member function 'void custom::deque<Spy,std::allocator<T>>::pop_back(void)'
-          with
-          [
-              T=Spy
-          ]
-  		C:\Users\marco\Desktop\232.12.Lab.115\testDeque.h(2242,17):
-  		see the first reference to 'custom::deque<Spy,std::allocator<T>>::pop_back' in 'TestDeque::test_popback_standard'
+  		C:\Users\marco\Desktop\232.12.Lab.115\testDeque.h(336,19):
+  		see the first reference to 'custom::deque<Spy,std::allocator<T>>::reallocate' in 'TestDeque::test_realloc_emptyToOne'
           with
           [
               T=Spy
           ]
   
-C:\Users\marco\Desktop\232.12.Lab.115\deque.h(341,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\marco\Desktop\232.12.Lab.115\deque.h(463,21): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'testDeque.cpp')
   
   LabDeque.vcxproj -> C:\Users\marco\Desktop\232.12.Lab.115\x64\Debug\LabDeque.exe

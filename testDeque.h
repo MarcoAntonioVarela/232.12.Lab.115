@@ -45,7 +45,7 @@ public:
       test_construct_default();
 //      test_constructCopy_empty();
 //      test_constructCopy_standard();
-      //test_constructCopy_wrapped();
+      test_constructCopy_wrapped();
 
       // Assign
       test_assign_emptyToEmpty();
@@ -78,7 +78,7 @@ public:
       test_subscript_writeWrapped();
 
       // Insert
-//      test_pushback_empty();
+      //test_pushback_empty();
       //test_pushback_roomNoWrap();
       //test_pushback_newBlock();
       //test_pushback_wrap();
