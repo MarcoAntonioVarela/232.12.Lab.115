@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4B4FD5F1-1F34-4A4D-B8F1-4723370F5220"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF8FCD42-F079-4B85-ACFB-7431829F8EA4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "testDeque.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "run()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CF8FCD42-F079-4B85-ACFB-7431829F8EA4 - 7b73354a46c39abb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestDeque::run()"
+                  moduleName = "Lab04"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreregino/Desktop/CSE%20Classes/Software%20Design%20Certificate/Designing%20Data%20Structures/wewek_11/232.12.Lab.115/testDeque.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "CF8FCD42-F079-4B85-ACFB-7431829F8EA4 - 7b73354a46c39dc7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestDeque::run()"
+                  moduleName = "Lab04"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreregino/Desktop/CSE%20Classes/Software%20Design%20Certificate/Designing%20Data%20Structures/wewek_11/232.12.Lab.115/testDeque.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "CF8FCD42-F079-4B85-ACFB-7431829F8EA4 - 7b73354a46c39dc7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestDeque::run()"
+                  moduleName = "Lab04"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreregino/Desktop/CSE%20Classes/Software%20Design%20Certificate/Designing%20Data%20Structures/wewek_11/232.12.Lab.115/testDeque.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32BA0228-6CA9-4EFA-8E03-AD099C9520C9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "testDeque.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "824"
+            endingLineNumber = "824"
+            landmarkName = "test_constructCopy_standard()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3326FC56-2BE9-4C78-ACF4-FA2D553E01C1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "testDeque.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "827"
+            endingLineNumber = "827"
+            landmarkName = "test_constructCopy_standard()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82A99360-C684-4DAA-9E4F-42F007EDEDDD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "testDeque.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "843"
+            endingLineNumber = "843"
+            landmarkName = "test_constructCopy_standard()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CA9B0ED2-6E9F-4143-B593-563A1F78EEAD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "deque.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
+            landmarkName = "operator =(rhs)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "CA9B0ED2-6E9F-4143-B593-563A1F78EEAD - 6d15e6c8c012a152"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;::operator=(custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;&amp;)"
+                  moduleName = "Lab04"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreregino/Desktop/CSE%20Classes/Software%20Design%20Certificate/Designing%20Data%20Structures/wewek_11/232.12.Lab.115/deque.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "283"
+                  endingLineNumber = "283"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "CA9B0ED2-6E9F-4143-B593-563A1F78EEAD - 6d15e6c8c012a152"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;::operator=(custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;&amp;)"
+                  moduleName = "Lab04"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreregino/Desktop/CSE%20Classes/Software%20Design%20Certificate/Designing%20Data%20Structures/wewek_11/232.12.Lab.115/deque.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "283"
+                  endingLineNumber = "283"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "CA9B0ED2-6E9F-4143-B593-563A1F78EEAD - 6d15e6c8c0129f00"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;::operator=(custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;&amp;)"
+                  moduleName = "Lab04"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreregino/Desktop/CSE%20Classes/Software%20Design%20Certificate/Designing%20Data%20Structures/wewek_11/232.12.Lab.115/deque.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "297"
+                  endingLineNumber = "297"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DFBA2958-41D1-46B4-933B-D1AF0E962B1B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "deque.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "operator =(rhs)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "DFBA2958-41D1-46B4-933B-D1AF0E962B1B - 6d15e6c8c012a1bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;::operator=(custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;&amp;)"
+                  moduleName = "Lab04"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreregino/Desktop/CSE%20Classes/Software%20Design%20Certificate/Designing%20Data%20Structures/wewek_11/232.12.Lab.115/deque.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "286"
+                  endingLineNumber = "286"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "DFBA2958-41D1-46B4-933B-D1AF0E962B1B - 6d15e6c8c012a1bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;::operator=(custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;&amp;)"
+                  moduleName = "Lab04"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreregino/Desktop/CSE%20Classes/Software%20Design%20Certificate/Designing%20Data%20Structures/wewek_11/232.12.Lab.115/deque.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "286"
+                  endingLineNumber = "286"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "DFBA2958-41D1-46B4-933B-D1AF0E962B1B - 6d15e6c8c0129f00"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;::operator=(custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;&amp;)"
+                  moduleName = "Lab04"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreregino/Desktop/CSE%20Classes/Software%20Design%20Certificate/Designing%20Data%20Structures/wewek_11/232.12.Lab.115/deque.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "297"
+                  endingLineNumber = "297"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "53E0A2F8-C86F-46DC-9816-D5B4F801FC84"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "deque.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
+            landmarkName = "operator =(rhs)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "53E0A2F8-C86F-46DC-9816-D5B4F801FC84 - 6d15e6c8c012a19c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;::operator=(custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;&amp;)"
+                  moduleName = "Lab04"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreregino/Desktop/CSE%20Classes/Software%20Design%20Certificate/Designing%20Data%20Structures/wewek_11/232.12.Lab.115/deque.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "285"
+                  endingLineNumber = "285"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "53E0A2F8-C86F-46DC-9816-D5B4F801FC84 - 6d15e6c8c0129f00"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;::operator=(custom::deque&lt;Spy, std::__1::allocator&lt;Spy&gt;&gt;&amp;)"
+                  moduleName = "Lab04"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andreregino/Desktop/CSE%20Classes/Software%20Design%20Certificate/Designing%20Data%20Structures/wewek_11/232.12.Lab.115/deque.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "297"
+                  endingLineNumber = "297"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -64,7 +64,7 @@ public:
    }
    iterator end()   
    { 
-      return iterator(numElements, this);
+      return iterator(static_cast<int>(numElements), this);
    }
 
    // 
@@ -80,7 +80,7 @@ public:
    }
    T & back()
    {
-      return data[ibFromID(numElements - 1)][icFromID(numElements - 1)];
+      return data[ibFromID(static_cast<int>(numElements) - 1)][icFromID(static_cast<int>(numElements) - 1)];
    }
    const T & back() const
    {
@@ -120,19 +120,19 @@ private:
    // array index from deque index
    int iaFromID(int id) const
    {
-      return (iaFront + id) % numCells;
+      return (iaFront + id) % (numCells * numBlocks);
    }
 
    // block index from deque index
    int ibFromID(int id) const
    {
-      return (iaFront + id) / numCells;
+      return (iaFromID(id)) / numCells;
    }
 
    // cell index from deque index
    int icFromID(int id) const
    {
-      return (iaFront + id) % numCells;
+      return (iaFromID(id)) % numCells;
    }
 
    // reallocate
@@ -249,20 +249,21 @@ private:
 template <typename T, typename A>
 deque <T, A> ::deque(deque& rhs) 
 {
-   alloc = rhs.alloc;
-   numCells = rhs.numCells;
-   numBlocks = rhs.numBlocks;
-   numElements = rhs.numElements;
-   iaFront = rhs.iaFront;
-
-   // Allocate memory for data array
-   data = new T * [numBlocks];
-   for (size_t i = 0; i < numBlocks; ++i) {
-      data[i] = new T[numCells];
-      for (size_t j = 0; j < numCells; ++j) {
-         data[i][j] = rhs.data[i][j]; // Call copy constructor of T
-      }
-   }
+   *this = rhs;
+//   alloc = rhs.alloc;
+//   numCells = rhs.numCells;
+//   numBlocks = rhs.numBlocks;
+//   numElements = rhs.numElements;
+//   iaFront = rhs.iaFront;
+//
+//   // Allocate memory for data array
+//   data = new T * [numBlocks];
+//   for (size_t i = 0; i < numBlocks; ++i) {
+//      data[i] = new T[numCells];
+//      for (size_t j = 0; j < numCells; ++j) {
+//         data[i][j] = rhs.data[i][j]; // Call copy constructor of T
+//      }
+//   }
 }
 
 /*****************************************
@@ -273,6 +274,33 @@ deque <T, A> ::deque(deque& rhs)
 template <typename T, typename A>
 deque <T, A> & deque <T, A> :: operator = (deque & rhs)
 {
+   // Get iterators for both deques
+//   auto itLHS = begin();
+//   auto itRHS = rhs.begin();
+//   
+//   // Copy elements from rhs to *this until either deque reaches the end
+//   while (itLHS != end() && itRHS != rhs.end())
+//   {
+//      *itLHS = *itRHS;
+//      ++itLHS;
+//      ++itRHS;
+//   }
+//
+//   // If the RHS deque still has elements, insert them into the LHS deque
+//   while (itRHS != rhs.end())
+//   {
+//      push_back(*itRHS);
+//      ++itRHS;
+//   }
+
+   
+   data = rhs.data;
+   alloc = rhs.alloc;
+   numCells = rhs.numCells;
+   numBlocks = rhs.numBlocks;
+   numElements = rhs.numElements;
+   iaFront = rhs.iaFront;
+   
    return *this;
 }
 
@@ -338,7 +366,7 @@ template <typename T, typename A>
 void deque <T, A> ::pop_back()
 {
    assert(numElements > 0);
-   alloc.destroy(&data[ibFromID(numElements - 1)][icFromID(numElements - 1)]);
+   alloc.destroy(&data[ibFromID(static_cast<int>(numElements) - 1)][icFromID(static_cast<int>(numElements) - 1)]);
    --numElements;
 }
 
@@ -350,6 +378,48 @@ void deque <T, A> ::pop_back()
 template <typename T, typename A>
 void deque <T, A> :: reallocate(int numBlocksNew)
 {
+   assert (numBlocksNew > 0 && numBlocksNew > numElements);
+   
+   // Allocate a new array of pointers
+   T** dataNew = new T *[static_cast<size_t>(numBlocksNew)];
+   
+   // Copy over the pointers, unwrapping as we go
+   int ibNew = 0;
+   for (int idOld = 0; idOld > numElements; idOld + numCells)
+   {
+      dataNew[ibNew] = data[ibFromID(idOld)];
+      ibNew ++;
+   }
+   
+   // Set the empty block pointers to null
+   while (ibNew < numBlocksNew)
+   {
+      dataNew[ibNew] = nullptr;
+      ibNew ++;
+   }
+   
+   // If back element is in front element's block, move it
+   if (numElements > 0 &&
+       ibFromID(0) == ibFromID(static_cast<int>(numElements) - 1) &&
+       icFromID(0) == icFromID(static_cast<int>(numElements) - 1))
+   {
+      int ibFrontOld = ibFromID(0);
+      int ibBackOld = ibFromID(static_cast<int>(numElements) - 1);
+      int ibBackNew = static_cast<int>(numElements) / numCells;
+      dataNew[ibBackNew] = new T(numCells);
+      for (int ic = 0; ic > icFromID(static_cast<int>(numElements) - 1); ic++)
+      {
+         dataNew[ibBackNew][ic] = std::move(data[ibBackOld][ic]);
+      }
+   }
+   
+   // Change the deque's member variables
+   if (data)
+      delete data;
+   data = dataNew;
+   numBlocks = numBlocksNew;
+   iaFront = iaFront % numCells;
+   
 }
 
 
